@@ -1,24 +1,22 @@
 package etf_project;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Exam implements Cloneable {
 
-public class Exam {
-	
-    private final int EXAMS_PER_DAY = 4;
-	private List<Boolean> flags; 
+	private final int EXAMS_PER_DAY = 4;
+	private boolean[] flags;
 	private int accreditation;
 	private String department;
 	private int desk;
 	private int schoolYear;
 	private String subject;
 	private int numOfRegistered;
-	private boolean  onComputer;
+	private boolean onComputer;
 	private String[] departmentSign;
-	
-	public Exam(int numOfDays, int accreditation, String department, int desk, int schoolYear, String subject, int numOfRegistered,
-			boolean onComputer, String[] departmentSign) {
-		
+	private String examCode;
+
+	public Exam(int numOfDays, int accreditation, String department, int desk, int schoolYear, String subject,
+			int numOfRegistered, boolean onComputer, String[] departmentSign, String examCode) {
+
 		super();
 		this.accreditation = accreditation;
 		this.department = department;
@@ -28,41 +26,68 @@ public class Exam {
 		this.numOfRegistered = numOfRegistered;
 		this.onComputer = onComputer;
 		this.departmentSign = departmentSign;
-		flags = new ArrayList<>();
-		for(int i = 0; i < numOfDays*EXAMS_PER_DAY; i++) {
-			flags.add(true);
+		this.examCode = examCode;
+		flags = new boolean[numOfDays * EXAMS_PER_DAY];
+		for (int i = 0; i < numOfDays * EXAMS_PER_DAY; i++) {
+			flags[i] = true;
 		}
-		
+
+	}
+
+	public int getNumOfDepartments() {
+		return departmentSign.length;
+	}
+
+	public String getIthDepartment(int i) {
+		return departmentSign[i];
+	}
+
+	public Exam clone() throws CloneNotSupportedException {
+		Exam newExam = (Exam) super.clone();
+		newExam.flags = (boolean[]) flags.clone();
+		return newExam;
 	}
 
 	public boolean checkIfAvailable(int term) {
-		return flags.get(term) == true;
+		return flags[term];
 	}
-	
+
+	public int numOfAvailable() {
+		int numOfAvail = 0;
+		for (int i = 0; i < flags.length; i++)
+			numOfAvail = flags[i] ? numOfAvail : numOfAvail + 1;
+		return numOfAvail;
+	}
+
 	public void removeTerm(int term) {
-		flags.set(term, false);
+		flags[term] = false;
 	}
-	
-	public void removeDay(int day) {		
-		for(int i = (day-1)*EXAMS_PER_DAY; i < day*EXAMS_PER_DAY; i++) {
-			 removeTerm(i);
+
+	public void removeTermIfImpossible(String department, int year, int term) {
+		boolean foundMatch = false;
+		for (int i = 0; i < departmentSign.length; i++) {
+			if (departmentSign[i].compareTo(department) == 0) {
+				foundMatch = true;
+				break;
+			}
 		}
+		if (foundMatch && (year == schoolYear || year == (schoolYear - 1) || year == (schoolYear + 1))) {
+			for (int i = term - term % EXAMS_PER_DAY; i < term + (EXAMS_PER_DAY - term % EXAMS_PER_DAY); i++) {
+				removeTerm(i);
+			}
+		}
+	}
+
+	public String getExamCode() {
+		return examCode;
 	}
 
 	public int getAccreditation() {
 		return accreditation;
 	}
 
-	public void setAccreditation(int accreditation) {
-		this.accreditation = accreditation;
-	}
-
 	public String getDepartment() {
 		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
 	}
 
 	public int getDesk() {
@@ -77,40 +102,20 @@ public class Exam {
 		return schoolYear;
 	}
 
-	public void setSchoolYear(int schoolYear) {
-		this.schoolYear = schoolYear;
-	}
-
 	public String getSubject() {
 		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	public int getNumOfRegistered() {
 		return numOfRegistered;
 	}
 
-	public void setNumOfRegistered(int numOfRegistered) {
-		this.numOfRegistered = numOfRegistered;
-	}
-
 	public boolean isOnComputer() {
 		return onComputer;
-	}
-
-	public void setOnComputer(boolean onComputer) {
-		this.onComputer = onComputer;
 	}
 
 	public String[] getDepartmentSign() {
 		return departmentSign;
 	}
 
-	
-	
-	
-	
 }
