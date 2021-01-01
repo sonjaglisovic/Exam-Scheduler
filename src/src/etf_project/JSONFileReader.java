@@ -30,8 +30,6 @@ public class JSONFileReader {
 	final int SCHOOL_YEAR_SIGN = 5;
 	final int SUBJECT_CODE_START = 6;
 
-<<<<<<< refs/remotes/origin/main
-=======
 	/**
 	 * Funkcija cita ispite iz JSON fajla i formira listu objekata klase Exam koja
 	 * se dalje koristi u obradi
@@ -41,7 +39,6 @@ public class JSONFileReader {
 	 * @return
 	 */
 
->>>>>>> Finished
 	public List<Exam> readExams(String filePath, int numOfDays) {
 		List<Exam> exams = new ArrayList<>();
 
@@ -77,8 +74,6 @@ public class JSONFileReader {
 		return exams;
 	}
 
-<<<<<<< refs/remotes/origin/main
-=======
 	/**
 	 * 
 	 * Funkcija iz ulaznog JSON fajla cita ucionice i formira listu objekata klase
@@ -88,7 +83,6 @@ public class JSONFileReader {
 	 * @param numOfDays broj dana koliko traje rok
 	 * @return
 	 */
->>>>>>> Finished
 	public List<Classroom> readClassRooms(String filePath, int numOfDays) {
 		List<Classroom> classrooms = new ArrayList<>();
 		try {
@@ -116,15 +110,12 @@ public class JSONFileReader {
 		return instance;
 	}
 
-<<<<<<< refs/remotes/origin/main
-=======
 	/**
 	 * Funkcija cita informaciju o trajanju ispitnog roka
 	 * 
 	 * @param filePath putanja do JSON fajla koji sadrzi listu ispita
 	 * @return
 	 */
->>>>>>> Finished
 	public int readNumOfDays(String filePath) {
 		int numOfDays = 0;
 		JSONTokener myTokener;
