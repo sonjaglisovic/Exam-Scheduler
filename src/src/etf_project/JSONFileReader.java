@@ -9,6 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+/**
+ * 
+ * Klasa sluzi za citanje JSON fajlova i konvertovanje u kolekcije objekata
+ * pogodnih za obradu
+ *
+ */
 public class JSONFileReader {
 
 	static JSONFileReader instance;
@@ -24,6 +30,18 @@ public class JSONFileReader {
 	final int SCHOOL_YEAR_SIGN = 5;
 	final int SUBJECT_CODE_START = 6;
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * Funkcija cita ispite iz JSON fajla i formira listu objekata klase Exam koja
+	 * se dalje koristi u obradi
+	 * 
+	 * @param filePath  putanja do fajla u kome je data lista ispita
+	 * @param numOfDays broj dana koliko traje rok
+	 * @return
+	 */
+
+>>>>>>> Finished
 	public List<Exam> readExams(String filePath, int numOfDays) {
 		List<Exam> exams = new ArrayList<>();
 
@@ -59,6 +77,18 @@ public class JSONFileReader {
 		return exams;
 	}
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * 
+	 * Funkcija iz ulaznog JSON fajla cita ucionice i formira listu objekata klase
+	 * Classroom pogodnih za pretragu
+	 * 
+	 * @param filePath  putanja do JSON fajla koji sadrzi listu sala
+	 * @param numOfDays broj dana koliko traje rok
+	 * @return
+	 */
+>>>>>>> Finished
 	public List<Classroom> readClassRooms(String filePath, int numOfDays) {
 		List<Classroom> classrooms = new ArrayList<>();
 		try {
@@ -86,6 +116,15 @@ public class JSONFileReader {
 		return instance;
 	}
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * Funkcija cita informaciju o trajanju ispitnog roka
+	 * 
+	 * @param filePath putanja do JSON fajla koji sadrzi listu ispita
+	 * @return
+	 */
+>>>>>>> Finished
 	public int readNumOfDays(String filePath) {
 		int numOfDays = 0;
 		JSONTokener myTokener;

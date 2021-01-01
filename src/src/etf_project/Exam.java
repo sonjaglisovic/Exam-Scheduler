@@ -1,5 +1,16 @@
 package etf_project;
 
+<<<<<<< refs/remotes/origin/main
+=======
+/**
+ * 
+ * Klasa Exam sluzi za vodjenje evidencije o rasporedjenim i nerasporedjenim
+ * ispitima, cuva se informacija da li svaki od termina dolazi u obzir za taj
+ * ispit, cuvaju se informacije o ispitu dobijene citanjem iz ulaznog fajla
+ *
+ */
+
+>>>>>>> Finished
 public class Exam implements Cloneable {
 
 	private final int EXAMS_PER_DAY = 4;
@@ -42,6 +53,12 @@ public class Exam implements Cloneable {
 		return departmentSign[i];
 	}
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * Metoda za pravljenje duboke kopije objekata klase Exam
+	 */
+>>>>>>> Finished
 	public Exam clone() throws CloneNotSupportedException {
 		Exam newExam = (Exam) super.clone();
 		newExam.flags = (boolean[]) flags.clone();
@@ -52,6 +69,7 @@ public class Exam implements Cloneable {
 		return flags[term];
 	}
 
+<<<<<<< refs/remotes/origin/main
 	public int numOfAvailable() {
 		int numOfAvail = 0;
 		for (int i = 0; i < flags.length; i++)
@@ -59,10 +77,25 @@ public class Exam implements Cloneable {
 		return numOfAvail;
 	}
 
+=======
+>>>>>>> Finished
 	public void removeTerm(int term) {
 		flags[term] = false;
 	}
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * Metoda sluzi da izbaci iz opticaja termine koje ne dolaze u obzir zbog nekoga
+	 * ogranicenja Na primer vec postoji ispit u istoj ili u susdnoj godini sa istog
+	 * smera tog dana
+	 * 
+	 * @param department odsek za koji se razmatraju ogranizenja
+	 * @param year       godina na kojoj se razmatra ogranicenje
+	 * @param term       termin za koji se razmatra ogranicenje
+	 */
+
+>>>>>>> Finished
 	public void removeTermIfImpossible(String department, int year, int term) {
 		boolean foundMatch = false;
 		for (int i = 0; i < departmentSign.length; i++) {
@@ -70,12 +103,21 @@ public class Exam implements Cloneable {
 				foundMatch = true;
 				break;
 			}
+<<<<<<< refs/remotes/origin/main
 		}
 		if (foundMatch && (year == schoolYear || year == (schoolYear - 1) || year == (schoolYear + 1))) {
 			for (int i = term - term % EXAMS_PER_DAY; i < term + (EXAMS_PER_DAY - term % EXAMS_PER_DAY); i++) {
 				removeTerm(i);
 			}
+=======
+>>>>>>> Finished
 		}
+		if (foundMatch && year == schoolYear) {
+			for (int i = term - term % EXAMS_PER_DAY; i < term + (EXAMS_PER_DAY - term % EXAMS_PER_DAY); i++) {
+				removeTerm(i);
+			}
+		} else if (foundMatch && (year == (schoolYear - 1) || year == (schoolYear + 1)))
+			removeTerm(term);
 	}
 
 	public String getExamCode() {

@@ -9,6 +9,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+<<<<<<< refs/remotes/origin/main
+=======
+/**
+ * 
+ * Klasa sluzi za ispis rasporeda u izlazni fajl u formatu kompatibilnom sa CSV
+ *
+ */
+>>>>>>> Finished
 public class MyCSVWriter {
 
 	List<ScheduledExam> schedule;
@@ -44,6 +52,15 @@ public class MyCSVWriter {
 		return null;
 	}
 
+<<<<<<< refs/remotes/origin/main
+=======
+	/**
+	 * Funkcija koja upisuje rezultat prosledjen u vidu liste u izlazni fajl
+	 * 
+	 * @param filePath Naziv fajla u koji se upisuje rezultat
+	 * @throws IOException
+	 */
+>>>>>>> Finished
 	public void writeToFile(String filePath) throws IOException {
 
 		File file = new File(filePath);

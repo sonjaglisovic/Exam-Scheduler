@@ -3,6 +3,15 @@ package etf_project;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< refs/remotes/origin/main
+=======
+/**
+ * 
+ * Klasa sluzi za smestanje vec rasporedjenih ispita
+ *
+ */
+
+>>>>>>> Finished
 public class ScheduledExam implements Cloneable {
 
 	private Exam exam;
